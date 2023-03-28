@@ -1,0 +1,189 @@
+@import '../core/variables.scss';
+.autor {
+    background-color: white;
+    color: #3e3e3e;
+    height: 50%;
+    transform: translateY(-75px);
+    margin: auto;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    padding: 20px 8.5px 34.5px 8.5px;
+    width: 95%;
+    height: 214px;
+    max-width: 280px;
+
+    @media (min-width: $breakpoint-tablet) {
+        padding: 33px 25px 40px 25px;
+        width: 90%;
+        height: 312px;
+        gap: 40px;
+        transform: translateY(-100px);
+        max-width: 500px;
+    }
+
+    .articleProject {
+        width: 60%;
+
+        &__subtitle {
+            font-size: 8px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 9.4px;
+            color: #302c42;
+
+            @media (min-width: $breakpoint-tablet) {
+                font-size: 10px;
+            }
+        }
+
+        &__line {
+            width: 100%;
+            border: 0;
+            height: 1px;
+
+            background-image: linear-gradient(to right,
+                    rgba(255, 255, 255, 0),
+                    rgba(1, 1, 1, 0.75),
+                    rgba(255, 255, 255, 0));
+        }
+
+        &__title {
+            font-size: 14px;
+            font-family: $font__text;
+            font-weight: 500;
+            color: black;
+            margin-top: 10px;
+            overflow-wrap: break-word;
+
+            @media (min-width: $breakpoint-tablet) {
+                font-size: 24px;
+                margin-bottom: 10px;
+            }
+        }
+
+        &__slogan {
+            font-family: $font__text;
+            font-weight: 500;
+            font-size: 12px;
+            margin-bottom: 10px;
+            color: #575757;
+            font-weight: 500;
+
+            @media (min-width: $breakpoint-tablet) {
+                font-size: 16px;
+            }
+        }
+
+        &__desc {
+            font-size: 8px;
+            margin-bottom: 10px;
+            line-height: 14.1px;
+            max-width: 200px;
+            overflow-wrap: break-word;
+
+            @media (min-width: $breakpoint-tablet) {
+                font-size: 10px;
+                line-height: 17.6px;
+                max-width: 250px;
+                overflow-wrap: break-word;
+            }
+        }
+
+        &__technologies {
+            font-family: $font__card;
+            border-radius: 20px;
+            font-size: 10px;
+            /* width: 200px; */
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 23px;
+
+            @media (min-width: $breakpoint-tablet) {
+                background-color: lightgray;
+                border-radius: 20px;
+                font-size: 12px;
+                padding: 10px;
+            }
+
+            &--text {
+                font-size: 8px;
+                color: #505050;
+                font-weight: 500;
+
+                @media (min-width: $breakpoint-tablet) {
+                    font-size: 12px;
+                }
+            }
+
+            &--icons {
+                display: flex;
+                gap: 5px;
+            }
+        }
+    }
+
+    .info-autor {
+        width: 40%;
+        text-align: center;
+
+        &__image {
+            margin: 0 auto;
+            border-radius: 50%;
+            width: 70.5px;
+            height: 70.5px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            @media (min-width: $breakpoint-tablet) {
+                border-radius: 50%;
+                width: 109px;
+                height: 109px;
+            }
+        }
+
+        &__job {
+            font-weight: 500;
+            color: #909090;
+            font-size: 10px;
+            font-family: $font__card;
+            overflow-wrap: break-word;
+            max-width: 78px;
+            text-align: center;
+
+            @media (min-width: $breakpoint-tablet) {
+                font-size: 16px;
+                max-width: 100px;
+            }
+
+            @media (min-width: $breakpoint-desktop) {
+                max-width: 200px;
+            }
+
+        }
+
+        &__name {
+            font-size: 14px;
+            font-family: $font__card;
+            font-weight: 900;
+            color: rgba(0, 0, 0, 0.8);
+            overflow-wrap: break-word;
+            max-width: 78px;
+            text-align: center;
+
+            @media (min-width: $breakpoint-tablet) {
+                font-size: 18px;
+                max-width: 100px;
+            }
+
+            @media (min-width: $breakpoint-desktop) {
+                max-width: 150px;
+            }
+        }
+    }
+}  

@@ -1,0 +1,13 @@
+@import '../core/variables.scss';
+
+.preview {
+    width: 90%;
+
+    @media (min-width: $breakpoint-tablet) {
+        width: 60%;
+        padding: 20px;
+    }
+
+    
+}
+@import './Card.scss';

@@ -1,0 +1,19 @@
+// media-queries
+
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+
+// fonts
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+
+$font__landing: 'Quicksand', sans-serif;
+$font__text: 'Poppins', sans-serif;
+$font__card: 'Catamaran', sans-serif;
+$font__form: 'Montserrat', sans-serif;
+
+$color__green-light: #D3EBCD;
+$color__green-dark: #AEDBCE;
+$color__blue: #56778a;
+$color__text: #524a53;
+$color__form: #26312e;

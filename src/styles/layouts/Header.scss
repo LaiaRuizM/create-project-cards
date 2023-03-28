@@ -1,0 +1,34 @@
+@import "../core/variables.scss";
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  &__p {
+    display: none;
+    @media (min-width: $breakpoint-tablet) {
+      margin-left: 20px;
+      width: 250px;
+      display: flex;
+      align-items: center;
+      &--i {
+        color: $color__text;
+        font-size: 30px;
+        padding-right: 7px;
+      }
+      &--span {
+        color: $color__text;
+        font-size: 14px;
+        font-family: $font__text;
+        font-weight: 500;
+      }
+    }
+  }
+
+  &__img {
+    height: 46px;
+    width: 123px;
+  }
+}

@@ -1,0 +1,123 @@
+@import "../core/variables.scss";
+
+.landingPage {
+  background-color: $color__green-dark;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  min-height: 91vh;
+  @media (min-width: $breakpoint-desktop) {
+    min-height: 91.2vh;
+  }
+  &__title {
+    text-align: center;
+    font-family: $font__landing;
+    font-size: 1.4rem;
+    margin-top: 30px;
+    @media (min-width: $breakpoint-tablet) {
+      font-family: $font__landing;
+      font-size: 2rem;
+    }
+  }
+  &__subtitle {
+    margin-top: 15px;
+    text-align: center;
+    font-family: $font__landing;
+    font-size: 1rem;
+    margin-bottom: 30px;
+    @media (min-width: $breakpoint-tablet) {
+      font-family: $font__landing;
+      font-size: 1.4rem;
+    }
+  }
+
+  .link {
+    text-decoration: none 5px solid #000000;
+
+    &__btn {
+      margin-top: 10px;
+      background-color: #997a94;
+      border: 0 solid #e5e7eb;
+      box-sizing: border-box;
+      color: white;
+      display: flex;
+      font-family: $font__landing;
+      font-size: 1rem;
+      font-weight: 500;
+      justify-content: center;
+      line-height: 1.75rem;
+      padding: 0.75rem 1rem;
+      position: relative;
+      text-align: center;
+      width: 100%;
+      max-width: 360px;
+      position: relative;
+      cursor: pointer;
+      transform: rotate(-2deg);
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      @media (min-width: 768px) {
+        padding: 0.75rem 2rem;
+        font-size: 1.25rem;
+      }
+    }
+
+    &__btn:focus {
+      outline: 0;
+    }
+
+    &__btn:after {
+      content: "";
+      position: absolute;
+      border: 1px solid #000000;
+      bottom: 4px;
+      left: 4px;
+      width: calc(100% - 1px);
+      height: calc(100% - 1px);
+    }
+
+    &__btn:hover:after {
+      bottom: 2px;
+      left: 2px;
+    }
+  }
+
+  .landingDiv {
+    display: grid;
+    grid-template-columns: 300px;
+    grid-template-rows: auto;
+    gap: 18px;
+    padding-top: 120px;
+
+    @media (min-width: $breakpoint-tablet) {
+      grid-template-columns: 430px;
+      grid-template-rows: auto;
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+      grid-template-columns: 480px 480px;
+      grid-template-rows: auto auto;
+    }
+  }
+
+  .msg {
+    font-size: 16px;
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @media (min-width: $breakpoint-tablet) {
+      font-size: 20px;
+      font-weight: 700;
+    }
+    &__img {
+      height: 150px;
+      @media (min-width: $breakpoint-tablet) {
+        height: 250px;
+      }
+    }
+  }
+}

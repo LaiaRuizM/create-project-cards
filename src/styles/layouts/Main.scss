@@ -1,0 +1,66 @@
+@import '../core/variables.scss';
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 55px;
+        @media (min-width: $breakpoint-tablet) {
+            flex-direction: row;
+            align-items: flex-start;
+            padding-top: 0px;
+        }
+    @import './Preview.scss';
+    @import './Form.scss';
+}   
+
+
+.main .input::placeholder,
+.textarea::placeholder {
+    color: #ffffff;
+}
+
+
+
+.btn-color {
+    border-radius: 20px;
+    width: 85px;
+    height: 30px;
+    font-weight: bold;
+}
+
+.btn-color-dark {
+    background-color: black;
+    color: white;
+}
+
+
+.hidden {
+    display: none;
+}
+
+.fa-globe {
+    font-size: 15px;
+}
+
+.fa-github {
+    font-size: 15px;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.btn__url {
+    font-size: 12px;
+    overflow-wrap: break-word;
+}
+
+.link__icons {
+    text-decoration: none;
+    color: #505050;
+    cursor: pointer;
+}
