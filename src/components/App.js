@@ -5,6 +5,7 @@ import Header from '../components/Header/Header';
 import CreateProject from './CreateProject';
 import LandingPage from './LandingPage';
 import { Route, Routes } from 'react-router-dom';
+import CardDetail from './card_detail/CardDetail';
 
 function App() {
   const [cards, setCards] = useState(objectToExport.get('cardList', [])); 
@@ -22,6 +23,9 @@ function App() {
         <Route 
           path="/CreateProject" 
           element={<CreateProject cards={cards} setCards={setCards} />}/>
+          <Route 
+          path="/CardDetail" 
+          element={<CardDetail cards={cards}/>}/>
       </Routes>
     </div>
   );
