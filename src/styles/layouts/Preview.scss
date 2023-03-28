@@ -8,6 +8,60 @@
         padding: 20px;
     }
 
+    &__link {
+        text-decoration: none 5px solid #000000;
+    }
+
+    &__btn {
+        margin-top: 10px;
+        margin-bottom: 20px;
+        background-color: #997a94;
+        border: 0 solid #e5e7eb;
+        box-sizing: border-box;
+        color: white;
+        display: flex;
+        font-family: $font__landing;
+        font-size: 1rem;
+        font-weight: 500;
+        justify-content: center;
+        line-height: 1.75rem;
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+        position: relative;
+        text-align: center;
+        width: 150px;
+        max-width: 360px;
+        position: relative;
+        cursor: pointer;
+        transform: rotate(-2deg);
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+    
+        @media (min-width: 768px) {
+            width: 200px;
+            font-size: 1.25rem;
+        }
+    }
+
+    &__btn:focus {
+        outline: 0;
+    }
+
+    &__btn:after {
+        content: "";
+        position: absolute;
+        border: 1px solid #000000;
+        bottom: 4px;
+        left: 4px;
+        width: calc(100% - 1px);
+        height: calc(100% - 1px);
+    }
+
+    &__btn:hover:after {
+        bottom: 2px;
+        left: 2px;
+    }
     
 }
 @import './Card.scss';
