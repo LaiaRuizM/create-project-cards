@@ -79,3 +79,15 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2023-03-28 12:38:52
+
+CREATE database thatsallfolks;
+USE thatsallfolks;
+
+ALTER table projects ADD COLUMN fkProject int not null;
+ALTER TABLE projects ADD FOREIGN KEY (fkProject) REFERENCES projects(idProject);
+
+
+
+
+
+
