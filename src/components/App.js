@@ -1,16 +1,31 @@
-import '../styles/App.scss';
-import objectToExport from '../services/LocalStorage';
-import { useEffect, useState } from 'react';
-import Header from '../components/Header/Header';
-import CreateProject from './CreateProject';
-import LandingPage from './LandingPage';
-import { Route, Routes } from 'react-router-dom';
-import CardDetail from './card_detail/CardDetail';
+import "../styles/App.scss";
+import objectToExport from "../services/LocalStorage";
+import { useEffect, useState } from "react";
+import Header from "../components/Header/Header";
+import CreateProject from "./CreateProject";
+import LandingPage from "./LandingPage";
+import { Route, Routes } from "react-router-dom";
+import CardDetail from "./card_detail/CardDetail";
+import user from "../images/user.png";
+import cover from "../images/proyecto.jpg";
 
 function App() {
-  const [cards, setCards] = useState(objectToExport.get('cardList', []));
+  const dataDetail = {
+    name: "",
+    slogan: "",
+    repo: "",
+    demo: "",
+    technologies: "",
+    desc: "",
+    autor: "",
+    job: "",
+    image: user,
+    photo: cover,
+  };
+
+  const [cards, setCards] = useState(objectToExport.get("cardList", []));
   useEffect(() => {
-    objectToExport.set('cardList', cards);
+    objectToExport.set("cardList", cards);
   }, [cards]);
 
   return (
@@ -25,7 +40,10 @@ function App() {
           path="/CreateProject"
           element={<CreateProject cards={cards} setCards={setCards} />}
         />
-        <Route path="/CardDetail" element={<CardDetail />} />
+        <Route
+          path="/CardDetail"
+          element={<CardDetail dataDetail={dataDetail} />}
+        />
       </Routes>
     </div>
   );
