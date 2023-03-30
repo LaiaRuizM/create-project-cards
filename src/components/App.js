@@ -8,24 +8,24 @@ import { Route, Routes } from 'react-router-dom';
 import CardDetail from './card_detail/CardDetail';
 
 function App() {
-  const [cards, setCards] = useState(objectToExport.get('cardList', [])); 
+  const [cards, setCards] = useState(objectToExport.get('cardList', []));
   useEffect(() => {
     objectToExport.set('cardList', cards);
-  }, [cards])
+  }, [cards]);
 
   return (
     <div className="container">
       <Header></Header>
       <Routes>
-        <Route 
-          path="/" 
-          element={<LandingPage cards={cards} setCards={setCards}/>}/>
-        <Route 
-          path="/CreateProject" 
-          element={<CreateProject cards={cards} setCards={setCards} />}/>
-          <Route 
-          path="/CardDetail" 
-          element={<CardDetail cards={cards}/>}/>
+        <Route
+          path="/"
+          element={<LandingPage cards={cards} setCards={setCards} />}
+        />
+        <Route
+          path="/CreateProject"
+          element={<CreateProject cards={cards} setCards={setCards} />}
+        />
+        <Route path="/CardDetail" element={<CardDetail />} />
       </Routes>
     </div>
   );
