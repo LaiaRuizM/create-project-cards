@@ -5,7 +5,7 @@ import '../../styles/layouts/LandingPage.scss';
 
 const CardDetail = ({ dataDetail }) => {
   return (
-    <>
+    <main className="landingPage">
       <h1 className="landingPage__title">Proyectos y ya estaría...</h1>
       <h2 className="landingPage__subtitle">
         Escaparate en línea para recoger ideas a través de la tecnología.
@@ -74,7 +74,7 @@ const CardDetail = ({ dataDetail }) => {
           </p>
         </article>
       </section>
-    </>
+    </main>
   );
 };
 
