@@ -55,3 +55,51 @@ server.get('/api/projects/all', (req, res) => {
       throw err;
     });
 });
+
+server.post('/api/projects/add', (req, res) => {
+  //console.log('');
+
+  const data = req.body;
+  console.log(data);
+
+  let sqlAuthor = 'INSERT INTO authors (autor, job, image) VALUES (?, ?, ?)';
+  let valuesAuthor = [data.autor, data.job, data.image];
+
+  connection
+    .query(sqlAuthor, valuesAuthor)
+    .then(([results, fields]) => {
+      console.log(results);
+
+      let sqlProject =
+        'INSERT INTO projects (name, slogan, repo, demo, technologies, `desc`, photo, fkAuthor) VALUES(?, ?, ?, ?, ?, ?, ?, ?) ';
+
+      let valuesProject = [
+        data.name,
+        data.slogan,
+        data.repo,
+        data.demo,
+        data.technologies,
+        data.desc,
+        data.photo,
+        results.insertId,
+      ];
+
+      connection
+        .query(sqlProject, valuesProject)
+        .then(([results, fields]) => {
+          console.log(results);
+          let response = {
+            success: true,
+            cardURL: `http://localhost:4001/api/projects/${results.insertId}`,
+          };
+          res.json(response);
+        })
+        .catch((err) => {
+          throw err;
+        });
+    })
+
+    .catch((err) => {
+      throw err;
+    });
+});
