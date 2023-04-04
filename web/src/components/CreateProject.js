@@ -81,6 +81,7 @@ const CreateProject = ({ cards, setCards }) => {
     validateAllInputs();
     if (checkErrors()) {
       dataApi(data).then((data) => {
+        // IMPORTANTE: recordar que cambiamos INFO por data en then/seturl/setshow
         setUrl(data.cardURL);
         setShow(data.success);
         setCards([...cards, data]);
