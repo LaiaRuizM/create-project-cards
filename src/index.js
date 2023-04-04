@@ -46,7 +46,7 @@ server.get('/api/projects/all', (req, res) => {
     .then(([results, fields]) => {
       console.log('Información recuperada:');
       results.forEach((result) => {
-        console.log(result);
+        /* console.log(result); */
       });
 
       res.json(results);

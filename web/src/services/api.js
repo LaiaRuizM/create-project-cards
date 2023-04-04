@@ -1,5 +1,6 @@
 const dataApi = (data) => {
-  return fetch('http://localhost:4001/api/projects/add', {
+  console.log(data)
+   return fetch('http://localhost:4001/api/projects/add', {
     method: 'POST',
     body: JSON.stringify(data),
     headers: { 'Content-type': 'application/json' },
@@ -19,4 +20,6 @@ const listProjectsApi = () => {
     });
 };
 
-export default { dataApi, listProjectsApi };
+const api = { dataApi: dataApi, listProjectsApi: listProjectsApi };
+
+export default api;

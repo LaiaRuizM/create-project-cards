@@ -2,7 +2,7 @@ import Preview from './Preview/Preview';
 import Form from './Form/Form';
 import '../styles/layouts/Main.scss';
 import { useState } from 'react';
-import dataApi from '../services/api';
+import api from '../services/api';
 import user from '../images/user.png';
 import cover from '../images/proyecto.jpg';
 
@@ -80,7 +80,9 @@ const CreateProject = ({ cards, setCards }) => {
     ev.preventDefault();
     validateAllInputs();
     if (checkErrors()) {
-      dataApi(data).then((info) => {
+      api.dataApi(data)
+      .then((info) => {
+        console.log(info)
         // IMPORTANTE: recordar que cambiamos INFO por data en then/seturl/setshow
         setUrl(info.cardURL);
         setShow(info.success);
