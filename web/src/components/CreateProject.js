@@ -80,10 +80,10 @@ const CreateProject = ({ cards, setCards }) => {
     ev.preventDefault();
     validateAllInputs();
     if (checkErrors()) {
-      dataApi(data).then((data) => {
+      dataApi(data).then((info) => {
         // IMPORTANTE: recordar que cambiamos INFO por data en then/seturl/setshow
-        setUrl(data.cardURL);
-        setShow(data.success);
+        setUrl(info.cardURL);
+        setShow(info.success);
         setCards([...cards, data]);
         setData(defaultData);
       });
