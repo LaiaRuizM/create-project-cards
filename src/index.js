@@ -1,12 +1,15 @@
-const express = require('express');
-const cors = require('cors');
-const mysql = require('mysql2/promise');
+const express = require("express");
+const cors = require("cors");
+const mysql = require("mysql2/promise");
 
 let connection;
 
 const server = express();
 server.use(cors());
-server.use(express.json({ limit: '10mb' }));
+server.use(express.json({ limit: "10mb" }));
+
+// Configurar el motor de plantillas
+server.set("view engine", "ejs");
 
 const serverPort = 4001;
 server.listen(serverPort, () => {
@@ -15,10 +18,10 @@ server.listen(serverPort, () => {
 
 mysql
   .createConnection({
-    host: 'sql.freedb.tech',
-    database: 'freedb_proyectos_y_ya_estaría',
-    user: 'freedb_adalabers',
-    password: 'H8@!*NM%M@K2Gj7',
+    host: "sql.freedb.tech",
+    database: "freedb_proyectos_y_ya_estaría",
+    user: "freedb_adalabers",
+    password: "H8@!*NM%M@K2Gj7",
   })
   .then((conn) => {
     connection = conn;
@@ -30,21 +33,21 @@ mysql
         );
       })
       .catch((err) => {
-        console.error('Error de conexion: ' + err.stack);
+        console.error("Error de conexion: " + err.stack);
       });
   })
   .catch((err) => {
-    console.error('Error de configuración: ' + err.stack);
+    console.error("Error de configuración: " + err.stack);
   });
 
-server.get('/api/projects/all', (req, res) => {
-  console.log('Pidiendo a la base de datos');
+server.get("/api/projects/all", (req, res) => {
+  console.log("Pidiendo a la base de datos");
   connection
     .query(
-      'SELECT * FROM projects, authors WHERE projects.fkAuthor = authors.idAuthor'
+      "SELECT * FROM projects, authors WHERE projects.fkAuthor = authors.idAuthor"
     )
     .then(([results, fields]) => {
-      console.log('Información recuperada:');
+      console.log("Información recuperada:");
       results.forEach((result) => {
         /* console.log(result); */
       });
@@ -56,13 +59,13 @@ server.get('/api/projects/all', (req, res) => {
     });
 });
 
-server.post('/api/projects/add', (req, res) => {
+server.post("/api/projects/add", (req, res) => {
   //console.log('');
 
   const data = req.body;
   console.log(data);
 
-  let sqlAuthor = 'INSERT INTO authors (autor, job, image) VALUES (?, ?, ?)';
+  let sqlAuthor = "INSERT INTO authors (autor, job, image) VALUES (?, ?, ?)";
   let valuesAuthor = [data.autor, data.job, data.image];
 
   connection
@@ -71,7 +74,7 @@ server.post('/api/projects/add', (req, res) => {
       console.log(results);
 
       let sqlProject =
-        'INSERT INTO projects (name, slogan, repo, demo, technologies, `desc`, photo, fkAuthor) VALUES(?, ?, ?, ?, ?, ?, ?, ?) ';
+        "INSERT INTO projects (name, slogan, repo, demo, technologies, `desc`, photo, fkAuthor) VALUES(?, ?, ?, ?, ?, ?, ?, ?) ";
 
       let valuesProject = [
         data.name,
@@ -104,5 +107,23 @@ server.post('/api/projects/add', (req, res) => {
     });
 });
 
+// DINÁMICOS
+// Insertar un proyecto Endpoint / projects / add
+server.get("/api/projects/detail/:projectID", (req, res) => {
+  const projectId = req.params.projectID;
+  const sql =
+    "SELECT * FROM projects, authors WHERE projects.fkAuthor=authors.idAuthor and idProject = ?";
+  connection
+    .query(sql, [projectId])
+    .then(([results, fields]) => {
+      res.render("project_detail", results[0]);
+    })
+    .catch((err) => {
+      throw err;
+    });
+});
 
-/* server.use(express.static('./src/public-react')); */
+// ESTÁTICOS
+server.use(express.static("./src/public-react"));
+server.use(express.static("./src/public-images"));
+server.use(express.static("./src/public-css/"));

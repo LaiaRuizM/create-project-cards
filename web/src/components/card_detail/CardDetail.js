@@ -1,7 +1,7 @@
-import '../../styles/layouts/Preview.scss';
-import '../../styles/layouts/Card.scss';
-import cover from '../../images/proyecto.jpg';
-import '../../styles/layouts/LandingPage.scss';
+import "../../styles/layouts/Preview.scss";
+import "../../styles/layouts/Card.scss";
+import cover from "../../images/proyecto.jpg";
+import "../../styles/layouts/LandingPage.scss";
 
 const CardDetail = ({ dataDetail }) => {
   return (
@@ -19,23 +19,23 @@ const CardDetail = ({ dataDetail }) => {
           <hr className="articleProject__line" />
 
           <h2 className="articleProject__title">
-            {dataDetail.name || 'Elegant Workspace'}
+            {dataDetail.name || "Elegant Workspace"}
           </h2>
           <p className="articleProject__slogan">
-            {dataDetail.slogan || 'Diseños Exclusivos'}
+            {dataDetail.slogan || "Diseños Exclusivos"}
           </p>
           <p className="articleProject__desc">
             {dataDetail.desc ||
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet faucibus commodo tellus lectus lobortis. '}
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet faucibus commodo tellus lectus lobortis. "}
           </p>
           <div className="articleProject__technologies">
             <p className="articleProject__technologies--text">
-              {dataDetail.technologies || 'React JS - HTML - CSS'}
+              {dataDetail.technologies || "React JS - HTML - CSS"}
             </p>
             <span className="articleProject__technologies--icons">
               <a
                 href={
-                  dataDetail.demo.startsWith('https://')
+                  dataDetail.demo.startsWith("https://")
                     ? dataDetail.demo
                     : null
                 }
@@ -47,7 +47,7 @@ const CardDetail = ({ dataDetail }) => {
               </a>
               <a
                 href={
-                  dataDetail.repo.startsWith('https://')
+                  dataDetail.repo.startsWith("https://")
                     ? dataDetail.repo
                     : null
                 }
@@ -67,10 +67,10 @@ const CardDetail = ({ dataDetail }) => {
             style={{ backgroundImage: `url(${dataDetail.image})` }}
           ></div>
           <p className="info-autor__job">
-            {dataDetail.job || 'Full Stack Developer'}
+            {dataDetail.job || "Full Stack Developer"}
           </p>
           <p className="info-autor__name">
-            {dataDetail.autor || 'Emmelie Björklund'}
+            {dataDetail.autor || "Emmelie Björklund"}
           </p>
         </article>
       </section>
