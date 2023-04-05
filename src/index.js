@@ -103,3 +103,6 @@ server.post('/api/projects/add', (req, res) => {
       throw err;
     });
 });
+
+
+/* server.use(express.static('./src/public-react')); */
