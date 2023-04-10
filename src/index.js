@@ -116,7 +116,6 @@ server.get("/api/projects/detail/:projectID", (req, res) => {
   connection
     .query(sql, [projectId])
     .then(([results, fields]) => {
-      console.log( 'hola')
       res.render("project_detail", results[0]);
     })
     .catch((err) => {
