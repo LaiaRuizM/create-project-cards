@@ -30,7 +30,7 @@ const LandingPage = ({ cards, setCards }) => {
       </button>
       <div className="landingDiv">
         {cards.map((card, index) => (
-          <Card data={card} key={index} />
+          <a href={`http://localhost:4001/api/projects/detail/${card.idProject}`} target='_blank' rel='noreferrer' className='card__link'><Card data={card} key={index} /></a>
         ))}
       </div>
       {cards.length === 0 && (

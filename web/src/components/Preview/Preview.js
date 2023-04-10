@@ -9,9 +9,6 @@ const Preview = ({ data }) => {
       <Link to="/" className="preview__link">
         <button className="preview__btn">VER PROYECTOS</button>
       </Link>
-      <Link to="/CardDetail" className="preview__link">
-        <button className="preview__btn">VER DETALLE</button>
-      </Link>
       <Profile avatar={data.photo} className="image"></Profile>
       <Card data={data}></Card>
     </section>

@@ -20,6 +20,14 @@ const listProjectsApi = () => {
     });
 };
 
-const api = { dataApi: dataApi, listProjectsApi: listProjectsApi };
+const showProject = (id) => {
+  return fetch(`http://localhost:4001/api/projects/detail/${id}`)
+    .then((response) => response.json())
+    .then((data) => {
+      return data;
+    });
+};
+
+const api = { dataApi: dataApi, listProjectsApi: listProjectsApi, showProject:showProject };
 
 export default api;

@@ -1,40 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/main.css">
-    <title>Proyectos.. ¡Y ya estaría! 🤩</title>
-</head>
-<body>
-    <main class="landingPage">
-        <h1 class="landingPage__title">Proyectos y ya estaría...</h1>
-        <h2 class="landingPage__subtitle">
-            Escaparate en línea para recoger ideas a través de la tecnología.
-        </h2>
-        <img class="image" src="<%= photo %>" alt="Project photography" />
-            <section class="autor">
-                <article class="articleProject"><small class="articleProject__subtitle">Personal Project Card</small>
-                    <hr class="articleProject__line">
-                    <h2 class="articleProject__title"><%= name %></h2>
-                    <p class="articleProject__slogan"><%= slogan %></p>
-                    <p class="articleProject__desc"><%= desc %></p>
-                    <div class="articleProject__technologies">
-                        <p class="articleProject__technologies--text"><%= technologies %></p><span
-                            class="articleProject__technologies--icons"><a target="_blank" href="<%= demo %>" class="link__icons"
-                                rel="noreferrer"><i class="fa-solid fa-globe"></i></a><a target="_blank" href="<%= repo %>"  class="link__icons"
-                                rel="noreferrer"><i class="fa-brands fa-github"></i></a></span>
-                    </div>
-                </article>
-                <article class="info-autor">
-                    <div class="info-autor__image"
-                        style="background-image:url('<%= image %>')"
-                    </div>
-                    <p class="info-autor__job"><%= job %></p>
-                    <p class="info-autor__name"><%= autor %></p>
-                </article>
-            </section>
-    </main>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="/main.css" />
+		<title>Proyectos.. ¡Y ya estaría! 🤩</title>
+	</head>
+	<body class="container">
+		<header class="header">
+			<a href="#/"
+				><img class="header__img" src="../web/src/images/logo.png" alt="logo"
+			/></a>
+		</header>
+		<main class="landingPage">
+			<h1 class="landingPage__title">Proyectos y ya estaría...</h1>
+			<h2 class="landingPage__subtitle">
+				Escaparate en línea para recoger ideas a través de la tecnología.
+			</h2>
+			<img class="image" src="<%= photo %>" alt="Project photography" />
+			<section class="autor">
+				<article class="articleProject">
+					<small class="articleProject__subtitle">Personal Project Card</small>
+					<hr class="articleProject__line" />
+					<h2 class="articleProject__title"><%= name %></h2>
+					<p class="articleProject__slogan"><%= slogan %></p>
+					<p class="articleProject__desc"><%= desc %></p>
+					<div class="articleProject__technologies">
+						<p class="articleProject__technologies--text">
+							<%= technologies %>
+						</p>
+						<span class="articleProject__technologies--icons"
+							><a
+								target="_blank"
+								href="<%= demo %>"
+								class="link__icons"
+								rel="noreferrer"
+								><i class="fa-solid fa-globe"></i></a
+							><a
+								target="_blank"
+								href="<%= repo %>"
+								class="link__icons"
+								rel="noreferrer"
+								><i class="fa-brands fa-github"></i></a
+						></span>
+					</div>
+				</article>
+				<article class="info-autor">
+					<img class="info-autor__image" src="<%= image %>" />
+					<p class="info-autor__job"><%= job %></p>
+					<p class="info-autor__name"><%= autor %></p>
+				</article>
+			</section>
+		</main>
+	</body>
 </html>
