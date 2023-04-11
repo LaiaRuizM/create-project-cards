@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const mysql = require("mysql2/promise");
+const swaggerUi = require('swagger-ui-express');
 
 let connection;
 
@@ -11,10 +12,16 @@ server.use(express.json({ limit: "10mb" }));
 // Configurar el motor de plantillas
 server.set("view engine", "ejs");
 
-const serverPort = 4001;
+const serverPort = process.env.PORT || 4001;
 server.listen(serverPort, () => {
   console.log(`Server listening at http://localhost:${serverPort}`);
 });
+
+
+const swaggerFile = require('./swagger.json');
+
+//Especificar en el server use
+server.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 mysql
   .createConnection({
