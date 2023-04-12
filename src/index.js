@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const mysql = require("mysql2/promise");
-const swaggerUi = require('swagger-ui-express');
+const swaggerUi = require("swagger-ui-express");
 
 let connection;
 
@@ -17,11 +17,10 @@ server.listen(serverPort, () => {
   console.log(`Server listening at http://localhost:${serverPort}`);
 });
 
-
-const swaggerFile = require('./swagger.json');
+const swaggerFile = require("./swagger.json");
 
 //Especificar en el server use
-server.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile));
+server.use("/doc", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 mysql
   .createConnection({
@@ -100,7 +99,7 @@ server.post("/api/projects/add", (req, res) => {
           console.log(results);
           let response = {
             success: true,
-            cardURL: `http://localhost:4001/api/projects/${results.insertId}`,
+            cardURL: `http://localhost:4001/api/projects/detail/${results.insertId}`,
           };
           res.json(response);
         })
