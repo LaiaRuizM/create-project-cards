@@ -1,12 +1,12 @@
-import { Link } from 'react-router-dom';
-import '../styles/layouts/LandingPage.scss';
-import Card from './Preview/Card';
-import landingImg from '../images/landingImg.png';
-import objectToExport from '../services/LocalStorage';
+import { Link } from "react-router-dom";
+import "../styles/layouts/LandingPage.scss";
+import Card from "./Preview/Card";
+import landingImg from "../images/landingImg.png";
+import objectToExport from "../services/LocalStorage";
 
 const LandingPage = ({ cards, setCards }) => {
   const handleResetProjects = () => {
-    objectToExport.remove('cardList');
+    objectToExport.remove("cardList");
     setCards([]);
   };
 
@@ -19,7 +19,7 @@ const LandingPage = ({ cards, setCards }) => {
       <Link to="/CreateProject" className="link">
         <button className="link__btn" title="Haz click para crear tu tarjeta">
           NUEVO PROYECTO
-        </button>{' '}
+        </button>{" "}
       </Link>
       <button
         className="link__btn"
@@ -30,7 +30,14 @@ const LandingPage = ({ cards, setCards }) => {
       </button>
       <div className="landingDiv">
         {cards.map((card, index) => (
-          <a href={`http://localhost:4001/api/projects/detail/${card.idProject}`} target='_blank' rel='noreferrer' className='card__link'><Card data={card} key={index} /></a>
+          <a
+            href={`https://proyectos-y-ya-estaria.onrender.com/api/projects/detail/${card.idProject}`}
+            target="_blank"
+            rel="noreferrer"
+            className="card__link"
+          >
+            <Card data={card} key={index} />
+          </a>
         ))}
       </div>
       {cards.length === 0 && (
