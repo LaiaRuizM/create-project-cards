@@ -92,14 +92,14 @@ server.post("/api/projects/add", (req, res) => {
         data.photo,
         results.insertId,
       ];
-
+      console.log(sqlProject);
       connection
         .query(sqlProject, valuesProject)
         .then(([results, fields]) => {
           console.log(results);
           let response = {
             success: true,
-            cardURL: `http://localhost:4001/api/projects/detail/${results.insertId}`,
+            cardURL: `https://proyectos-y-ya-estaria.onrender.com/api/projects/detail/${results.insertId}`,
           };
           res.json(response);
         })
