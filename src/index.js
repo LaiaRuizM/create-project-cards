@@ -7,7 +7,7 @@ let connection;
 
 const server = express();
 server.use(cors());
-server.use(express.json({ limit: "10mb" }));
+server.use(express.json({ limit: "25mb" }));
 
 // Configurar el motor de plantillas
 server.set("view engine", "ejs");
