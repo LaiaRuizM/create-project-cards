@@ -18,7 +18,7 @@ server.listen(serverPort, () => {
 });
 
 
-const swaggerFile = require('../swagger.json');
+const swaggerFile = require('./swagger.json');
 
 //Especificar en el server use
 server.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile));
