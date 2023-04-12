@@ -3,7 +3,7 @@
   "info": {
     "version": "1.0.0",
     "title": "My User Project CRUD",
-    "description": "My User Project Application API",
+    "description": "My User Project Application API"
   },
   "host": "localhost:4001",
   "basePath": "/",
@@ -18,6 +18,150 @@
         "get": {
             "tags": ["Projects Cards"],
             "description": "Listar los proyectos creados en la landing",
+            "parameters": [
+            {
+                "name": "name",
+                "in": "body",
+                "requiered": true,
+                "type": "string"
+            },
+            {
+                "name": "slogan",
+                "in": "body",
+                "requiered": true,
+                "type": "string"
+            },
+            {
+                "name": "repo",
+                "in": "body",
+                "requiered": true,
+                "type": "string"
+            },
+            {
+                "name": "demo",
+                "in": "body",
+                "requiered": true,
+                "type": "string"
+            },
+            {
+                "name": "technologies",
+                "in": "body",
+                "requiered": true,
+                "type": "string"
+            },
+            {
+                "name": "desc",
+                "in": "body",
+                "requiered": true,
+                "type": "string"
+            },
+            {
+                "name": "autor",
+                "in": "body",
+                "requiered": true,
+                "type": "string"
+            },
+            {
+                "name": "job",
+                "in": "body",
+                "requiered": true,
+                "type": "string"
+            },
+            {
+                "name": "image",
+                "in": "body",
+                "requiered": true,
+                "type": "string"
+            },
+            {
+                "name": "photo",
+                "in": "body",
+                "requiered": true,
+                "type": "string"
+            }
+            ],
+            "responses": {
+                "200": {
+                    "description": "OK"}
+            }
+        }
+    },
+    "/api/projects/add": {
+        "post": {
+            "tags": ["Add Project Card"],
+            "description": "Añadir nuevo proyecto",
+            "parameters": [
+            {
+                "name": "name",
+                "in": "body",
+                "requiered": true,
+                "type": "string"
+            },
+            {
+                "name": "slogan",
+                "in": "body",
+                "requiered": true,
+                "type": "string"
+            },
+            {
+                "name": "repo",
+                "in": "body",
+                "requiered": true,
+                "type": "string"
+            },
+            {
+                "name": "demo",
+                "in": "body",
+                "requiered": true,
+                "type": "string"
+            },
+            {
+                "name": "technologies",
+                "in": "body",
+                "requiered": true,
+                "type": "string"
+            },
+            {
+                "name": "desc",
+                "in": "body",
+                "requiered": true,
+                "type": "string"
+            },
+            {
+                "name": "autor",
+                "in": "body",
+                "requiered": true,
+                "type": "string"
+            },
+            {
+                "name": "job",
+                "in": "body",
+                "requiered": true,
+                "type": "string"
+            },
+            {
+                "name": "image",
+                "in": "body",
+                "requiered": true,
+                "type": "string"
+            },
+            {
+                "name": "photo",
+                "in": "body",
+                "requiered": true,
+                "type": "string"
+            }
+            ],
+            "responses": {
+                "200": {
+                    "description": "OK"}
+            }
+        }
+    },
+    "/api/projects/detail/:projectID": {
+"get": {
+            "tags": ["Project Detail"],
+            "description": "Mostrar detalles del proyecto.",
             "parameters": [
             {
                 "name": "name",
