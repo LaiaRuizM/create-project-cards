@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const mysql = require("mysql2/promise");
 const swaggerUi = require("swagger-ui-express");
-
+const swaggerFile = require("./swagger.json");
 let connection;
 
 const server = express();
@@ -17,55 +17,40 @@ server.listen(serverPort, () => {
   console.log(`Server listening at http://localhost:${serverPort}`);
 });
 
-const swaggerFile = require("./swagger.json");
-
 //Especificar en el server use
 server.use("/doc", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
-mysql
-  .createConnection({
+async function api() {
+  const resp = await fetch('');
+  const data = await resp.json();
+  console.log(data);
+}
+
+async function getConnection() {
+  const connection = await mysql.createConnection({
     host: "sql.freedb.tech",
     database: "freedb_proyectos_y_ya_estaría",
     user: "freedb_adalabers",
     password: "H8@!*NM%M@K2Gj7",
   })
-  .then((conn) => {
-    connection = conn;
-    connection
-      .connect()
-      .then(() => {
-        console.log(
-          `Conexión establecida con la base de datos (identificador=${connection.threadId})`
-        );
-      })
-      .catch((err) => {
-        console.error("Error de conexion: " + err.stack);
-      });
-  })
-  .catch((err) => {
-    console.error("Error de configuración: " + err.stack);
-  });
+    await connection.connect();
 
-server.get("/api/projects/all", (req, res) => {
+  console.log(
+    `Conexión establecida con la base de datos (identificador=${connection.threadId})`
+  );
+  return connection;
+  }
+
+server.get("/api/projects/all", async (req, res) => {
   console.log("Pidiendo a la base de datos");
-  connection
-    .query(
-      "SELECT * FROM projects, authors WHERE projects.fkAuthor = authors.idAuthor"
-    )
-    .then(([results, fields]) => {
-      console.log("Información recuperada:");
-      results.forEach((result) => {
-        console.log(result); 
-      });
-
-      res.json(results);
-    })
-    .catch((err) => {
-      throw err;
-    });
+    let sql= "SELECT * FROM projects, authors WHERE projects.fkAuthor = authors.idAuthor";  
+    const connection = await getConnection();
+    const [results, fields] = await connection.query(sql);
+    res.json(results);
+    connection.end();
 });
 
-server.post("/api/projects/add", (req, res) => {
+server.post("/api/projects/add", async (req, res) => {
   //console.log('');
 
   const data = req.body;
@@ -73,12 +58,8 @@ server.post("/api/projects/add", (req, res) => {
 
   let sqlAuthor = "INSERT INTO authors (autor, job, image) VALUES (?, ?, ?)";
   let valuesAuthor = [data.autor, data.job, data.image];
-
-  connection
-    .query(sqlAuthor, valuesAuthor)
-    .then(([results, fields]) => {
-      console.log(results);
-
+  const connection = await getConnection();
+  const [results, fields] = await connection.query(sqlAutor, valuesAutor);
       let sqlProject =
         "INSERT INTO projects (name, slogan, repo, demo, technologies, `desc`, photo, fkAuthor) VALUES(?, ?, ?, ?, ?, ?, ?, ?) ";
 
@@ -92,41 +73,25 @@ server.post("/api/projects/add", (req, res) => {
         data.photo,
         results.insertId,
       ];
-      console.log(sqlProject);
-      connection
-        .query(sqlProject, valuesProject)
-        .then(([results, fields]) => {
-          console.log(results);
+      const [resultsInsert] = await connection.query(sqlProject, valuesProject);
           let response = {
             success: true,
             cardURL: `https://proyectos-y-ya-estaria.onrender.com/api/projects/detail/${results.insertId}`,
           };
           res.json(response);
-        })
-        .catch((err) => {
-          throw err;
-        });
-    })
-
-    .catch((err) => {
-      throw err;
-    });
+       connection.end();
 });
 
 // DINÁMICOS
 // Insertar un proyecto Endpoint / projects / add
-server.get("/api/projects/detail/:projectID", (req, res) => {
+server.get("/api/projects/detail/:projectID", async (req, res) => {
   const projectId = req.params.projectID;
   const sql =
     "SELECT * FROM projects, authors WHERE projects.fkAuthor=authors.idAuthor and idProject = ?";
-  connection
-    .query(sql, [projectId])
-    .then(([results, fields]) => {
+  const connection = await getConnection();
+  const [results, fields] = await connection.query(sql, [projectId]);
       res.render("project_detail", results[0]);
-    })
-    .catch((err) => {
-      throw err;
-    });
+    connection.end();
 });
 
 // ESTÁTICOS
