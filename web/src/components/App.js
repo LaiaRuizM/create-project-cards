@@ -24,11 +24,11 @@ function App() {
     photo: cover,
   };
 
-  const [cards, setCards] = useState(objectToExport.get('cardList', []));
-  useEffect(() => {
+  const [cards, setCards] = useState(/* objectToExport.get('cardList', []) */ []);
+ /*  useEffect(() => {
     objectToExport.set('cardList', cards);
   }, [cards]);
-
+ */
   useEffect(() => {
     api.listProjectsApi().then((cleanData) => {
       setCards(cleanData);

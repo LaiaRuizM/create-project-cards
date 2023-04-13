@@ -6,8 +6,9 @@ import objectToExport from "../services/LocalStorage";
 
 const LandingPage = ({ cards, setCards }) => {
   const handleResetProjects = () => {
-    objectToExport.remove("cardList");
     setCards([]);
+    /* objectToExport.remove("cardList");
+    setCards([]); */
   };
 
   return (
