@@ -3,7 +3,6 @@ const cors = require("cors");
 const mysql = require("mysql2/promise");
 const swaggerUi = require("swagger-ui-express");
 const swaggerFile = require("./swagger.json");
-let connection;
 
 const server = express();
 server.use(cors());
@@ -59,7 +58,7 @@ server.post("/api/projects/add", async (req, res) => {
   let sqlAuthor = "INSERT INTO authors (autor, job, image) VALUES (?, ?, ?)";
   let valuesAuthor = [data.autor, data.job, data.image];
   const connection = await getConnection();
-  const [results, fields] = await connection.query(sqlAutor, valuesAutor);
+  const [results, fields] = await connection.query(sqlAuthor, valuesAuthor);
       let sqlProject =
         "INSERT INTO projects (name, slogan, repo, demo, technologies, `desc`, photo, fkAuthor) VALUES(?, ?, ?, ?, ?, ?, ?, ?) ";
 
@@ -76,7 +75,7 @@ server.post("/api/projects/add", async (req, res) => {
       const [resultsInsert] = await connection.query(sqlProject, valuesProject);
           let response = {
             success: true,
-            cardURL: `https://proyectos-y-ya-estaria.onrender.com/api/projects/detail/${results.insertId}`,
+            cardURL: `https://proyectos-y-ya-estaria.onrender.com/api/projects/detail/${resultsInsert.insertId}`,
           };
           res.json(response);
        connection.end();
