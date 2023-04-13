@@ -31,3 +31,5 @@ This project was supervised by the bootcamp instructors:
 - React Starter Kit
 - MySQL Workbench
 - Node JS
+- Render
+- Swagger
