@@ -2,7 +2,7 @@
 <img src="./LaiaRuiz.png" alt="Laia" width="280"/>
 </p>
 
-If you want to see the project: https://laiaruizm.github.io/create-project-cards/
+If you want to see the project: https://proyectos-y-ya-estaria.onrender.com/
 
 # PROYECTOS: y... ¡ya estaría! 💥
 
