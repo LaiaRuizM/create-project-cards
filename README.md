@@ -1,3 +1,9 @@
+<p align="center" style="margin-center:10%">
+<img src="./LaiaRuiz.png" alt="Laia" width="280"/>
+</p>
+
+If you want to see the project: https://laiaruizm.github.io/create-project-cards/
+
 # PROYECTOS: y... ¡ya estaría! 💥
 
 For this third module of the bootcamp we had to create a website whose main design was provided to the team by the Product Owner. However, we were given the liberty of adapting it to our own aesthetic and thee opportunity of suggesting to our client a new design. This website was created based on our current knowledge of React, JavaScript, HTML, CSS and SASS.
